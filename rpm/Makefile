@@ -14,7 +14,7 @@ ifdef BUILD_IMAGE
 	BUILD_IMAGE_FLAG=--build-arg $(BUILD_IMAGE)
 endif
 BUILD?=DOCKER_BUILDKIT=1 \
-	docker build \
+	docker build  --network=host \
 	$(BUILD_IMAGE_FLAG) \
 	--build-arg GO_IMAGE=$(GO_IMAGE) \
 	-t rpmbuild-$@/$(ARCH) \
@@ -23,7 +23,7 @@ BUILD?=DOCKER_BUILDKIT=1 \
 
 SPEC_FILES?=docker-ce.spec docker-ce-cli.spec
 SPECS?=$(addprefix SPECS/, $(SPEC_FILES))
-RPMBUILD=docker run --privileged --rm -i \
+RPMBUILD=docker run --privileged --network host --rm -i \
 	-e PLATFORM \
 	-v $(CURDIR)/rpmbuild/SOURCES:/root/rpmbuild/SOURCES \
 	-v $(CURDIR)/rpmbuild/RPMS:/root/rpmbuild/RPMS \

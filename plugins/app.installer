@@ -5,7 +5,7 @@ set -e
 source "$(dirname "$0")/.common"
 
 GOPATH=$(go env GOPATH)
-REPO=https://github.com/docker/app.git
+REPO=https://github.com.cnpmjs.org/docker/app.git
 COMMIT=v0.8.0
 DEST=${GOPATH}/src/github.com/docker/app
 

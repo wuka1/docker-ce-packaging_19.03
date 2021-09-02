@@ -5,7 +5,8 @@ set -e
 source "$(dirname "$0")/.common"
 PKG=github.com/docker/buildx
 GOPATH=$(go env GOPATH)
-REPO=https://${PKG}.git
+#REPO=https://${PKG}.git
+REPO=https://github.com.cnpmjs.org/docker/buildx.git
 : "${BUILDX_COMMIT=v0.4.2}"
 DEST=${GOPATH}/src/${PKG}
 
